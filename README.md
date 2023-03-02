@@ -1,9 +1,11 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-f4981d0f882b2a3f0472912d15f9806d57e124e0fc890972558857b51b24a6f9.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=10325032)
 # Práctica Espree logging
 
+Ginés Cruz Chávez
+
 ## Resumen de lo aprendido
 
-...
+
 
 ## Indicar los valores de los argumentos
 
@@ -32,13 +34,17 @@ function foo(a, b) {
 foo(1, 'wut', 3);
 ```
 
+Para lograr esto, es necesario 
+
 ## CLI con [Commander.js](https://www.npmjs.com/package/commander)
 
 ...
 
 ## Reto 1: Soportar funciones flecha
 
-...
+Para soportar funciones flecha, es necesario indicar que el tipo de función es `ArrowFunctionExpression` en el fichero `logging-espree.js`.
+
+```javascript
 
 ## Reto 2: Añadir el número de línea
 

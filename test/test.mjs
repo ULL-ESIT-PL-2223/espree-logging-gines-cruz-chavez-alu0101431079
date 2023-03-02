@@ -20,7 +20,27 @@ function removeSpaces(s) {
 }
 
 for (let i = 0; i < Test.length; i++) {
-  // Write your tests here   
+  it(`transpile(${Tst[i].input}, ${Tst[i].output})`, async () => {
+    // First transpile the input file to the output file.
+    await transpile(Test[i].input, Test[i].output);
+    // Compare the output file with the correct output file.
+    const transpileOutput = await fs.readFile(Test[i].output, 'utf8');
+    const correctTranspileOutput = await fs.readFile(Test[i].correctLogged, 'utf8');
+    assert.equal(removeSpaces(transpileOutput), removeSpaces(correctTranspileOutput));
+    // Compare the console.log output with the correct console.log output.
+    let outputs = [];
+    let oldLog = console.log;
+    console.log = function (...args) {
+      outputs.push(args.join(' '));
+    }
+    // Evaluate the output file.
+    await import(Test[i].output);
+    // Add a blank line at the end.
+    outputs.push('');
+    console.log = oldLog;
+    const correctOut = await fs.readFile(Test[i].correctOut, 'utf8');
+    assert.equal(outputs.join('\n'), correctOut);
+  });
 }
 
 
